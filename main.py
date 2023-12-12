@@ -11,13 +11,11 @@ shift = int(input("Type your shift number:\n"))
 
 def ceaser(start_text, shift_amount, cypher_direction):
     end_text = ""
-    new_position = 0
+    if cypher_direction == "decode":
+        shift_amount *= -1
     for letter in start_text:
         position = alphabet.index(letter)
-        if cypher_direction == "encode":
-            new_position = position + shift_amount
-        elif cypher_direction == "decode":
-            new_position = position - shift_amount
+        new_position = position + shift_amount
         end_text += alphabet[new_position]
     if cypher_direction == "encode":
         print(f"The encoded text is {end_text}")
